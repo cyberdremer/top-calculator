@@ -125,15 +125,18 @@ calculatorOperators.addEventListener('click', (Event) =>{
 
         }  
         else if(operator === "equals"){
+            runningInput.push(calculatorInput);
             if(runningInput.length !== 3){
                 calculatorScreen.textContent = ERROR;
             }
-            runningInput.push(calculatorInput);
-            expression = getExpression(runningInput);
-            const result = evaluateExpression(expression.operandOne, expression.operator, expression.operandTwo);
-            clearCalculatorInput();
-            calculatorInput = Number.toString(result);
-            calculatorScreen.textContent = result;
+            else{
+                expression = getExpression(runningInput);
+                const result = evaluateExpression(expression.operandOne, expression.operator, expression.operandTwo);
+                clearCalculatorInput();
+                calculatorInput = Number.toString(result);
+                calculatorScreen.textContent = result;
+            }
+            
 
         }
         else{
